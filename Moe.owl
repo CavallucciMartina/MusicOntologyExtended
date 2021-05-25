@@ -1,0 +1,852 @@
+@prefix : <http://www.semanticweb.org/marti/ontologies/2021/4/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/marti/ontologies/2021/4/Moe> .
+
+<http://www.semanticweb.org/marti/ontologies/2021/4/Moe> rdf:type owl:Ontology ;
+                                                          owl:imports <http://purl.org/ontology/mo/> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#hasDescription
+:hasDescription rdf:type owl:ObjectProperty ;
+                rdfs:domain :Concert .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#hasMusicalGenre
+:hasMusicalGenre rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :musicalGenreOf ;
+                 rdfs:domain :Concert ;
+                 rdfs:range <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Concert ;
+           rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#musicalGenreOf
+:musicalGenreOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Description
+:Description rdf:type owl:DatatypeProperty ;
+             rdfs:comment "Any comment or description about Concert, Event, Performance." .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Aereophones
+:Aereophones rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#BeatingReed
+:BeatingReed rdf:type owl:Class ;
+             rdfs:subClassOf :FreeAereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bowed
+:Bowed rdf:type owl:Class ;
+       rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Brass
+:Brass rdf:type owl:Class ;
+       rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Chordophones
+:Chordophones rdf:type owl:Class ;
+              rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Concert
+:Concert rdf:type owl:Class ;
+         rdfs:subClassOf <http://purl.org/ontology/mo/Performance> ;
+         rdfs:comment "A musical performance given in public, typically by several performers or of several compositions." .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DPStruck
+:DPStruck rdf:type owl:Class ;
+          rdfs:subClassOf :DeterminatePitch .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DeterminatePitch
+:DeterminatePitch rdf:type owl:Class ;
+                  rdfs:subClassOf :Membranophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Digital
+:Digital rdf:type owl:Class ;
+         rdfs:subClassOf :Electronic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DoubleReed
+:DoubleReed rdf:type owl:Class ;
+            rdfs:subClassOf :BeatingReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DoubleReeds
+:DoubleReeds rdf:type owl:Class ;
+             rdfs:subClassOf :ReedPipe .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Edge
+:Edge rdf:type owl:Class ;
+      rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electromagnetic
+:Electromagnetic rdf:type owl:Class ;
+                 rdfs:subClassOf :Electronic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electronic
+:Electronic rdf:type owl:Class ;
+            rdfs:subClassOf :Electrophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electrophones
+:Electrophones rdf:type owl:Class ;
+               rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Foot-blown
+:Foot-blown rdf:type owl:Class ;
+            rdfs:subClassOf :FramedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FramedReed
+:FramedReed rdf:type owl:Class ;
+            rdfs:subClassOf :FreeReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FreeAereophones
+:FreeAereophones rdf:type owl:Class ;
+                 rdfs:subClassOf :Aereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FreeReed
+:FreeReed rdf:type owl:Class ;
+          rdfs:subClassOf :FreeAereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Hand-blown
+:Hand-blown rdf:type owl:Class ;
+            rdfs:subClassOf :FramedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IPBlown
+:IPBlown rdf:type owl:Class ;
+         rdfs:subClassOf :IndeterminatePitch .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IPRubbed
+:IPRubbed rdf:type owl:Class ;
+          rdfs:subClassOf :IndeterminatePitch .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IPStruck
+:IPStruck rdf:type owl:Class ;
+          rdfs:subClassOf :IndeterminatePitch .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Idiophones
+:Idiophones rdf:type owl:Class ;
+            rdfs:subClassOf :Percussion .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IndeterminatePitch
+:IndeterminatePitch rdf:type owl:Class ;
+                    rdfs:subClassOf :Membranophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Location
+:Location rdf:type owl:Class ;
+          rdfs:comment "Place chosen for a show like a Square, Park and Theater." .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mechanically-blown
+:Mechanically-blown rdf:type owl:Class ;
+                    rdfs:subClassOf :FramedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Membranophones
+:Membranophones rdf:type owl:Class ;
+                rdfs:subClassOf :Percussion .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mouth-blown
+:Mouth-blown rdf:type owl:Class ;
+             rdfs:subClassOf :UnframedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mouth-blown-framed
+:Mouth-blown-framed rdf:type owl:Class ;
+                    rdfs:subClassOf :FramedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mouth-blownPlunked
+:Mouth-blownPlunked rdf:type owl:Class ;
+                    rdfs:subClassOf :UnframedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PPlunked
+:PPlunked rdf:type owl:Class ;
+          rdfs:subClassOf :Pitched .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PRubbed
+:PRubbed rdf:type owl:Class ;
+         rdfs:subClassOf :Pitched .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PStruck
+:PStruck rdf:type owl:Class ;
+         rdfs:subClassOf :Pitched .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Palace
+:Palace rdf:type owl:Class ;
+        rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Park
+:Park rdf:type owl:Class ;
+      rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Percussion
+:Percussion rdf:type owl:Class ;
+            rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PipeAereophones
+:PipeAereophones rdf:type owl:Class ;
+                 rdfs:subClassOf :Aereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Pitched
+:Pitched rdf:type owl:Class ;
+         rdfs:subClassOf :Idiophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Plucked
+:Plucked rdf:type owl:Class ;
+         rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ReedPipe
+:ReedPipe rdf:type owl:Class ;
+          rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#SingleReed
+:SingleReed rdf:type owl:Class ;
+            rdfs:subClassOf :BeatingReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#SingleReeds
+:SingleReeds rdf:type owl:Class ;
+             rdfs:subClassOf :ReedPipe .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Square
+:Square rdf:type owl:Class ;
+        rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Stadium
+:Stadium rdf:type owl:Class ;
+         rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Struck
+:Struck rdf:type owl:Class ;
+        rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Theater
+:Theater rdf:type owl:Class ;
+         rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#TreeFlutes
+:TreeFlutes rdf:type owl:Class ;
+            rdfs:subClassOf :Edge .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#UShaken
+:UShaken rdf:type owl:Class ;
+         rdfs:subClassOf :Unpitched .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#UStruck
+:UStruck rdf:type owl:Class ;
+         rdfs:subClassOf :Unpitched .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#UnframedReed
+:UnframedReed rdf:type owl:Class ;
+              rdfs:subClassOf :FreeReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Unpitched
+:Unpitched rdf:type owl:Class ;
+           rdfs:subClassOf :Idiophones .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#WhistleFlutes
+:WhistleFlutes rdf:type owl:Class ;
+               rdfs:subClassOf :Edge .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Wind-blown
+:Wind-blown rdf:type owl:Class ;
+            rdfs:subClassOf :UnframedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#WithValves
+:WithValves rdf:type owl:Class ;
+            rdfs:subClassOf :Brass .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#WithoutValves
+:WithoutValves rdf:type owl:Class ;
+               rdfs:subClassOf :Brass .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic
+<http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf :Electrophones .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Accordion
+:Accordion rdf:type owl:NamedIndividual ,
+                    :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#AeolianHarp
+:AeolianHarp rdf:type owl:NamedIndividual ,
+                      :Wind-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#AnimalHornShofar
+:AnimalHornShofar rdf:type owl:NamedIndividual ,
+                           :WithoutValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bandoneon
+:Bandoneon rdf:type owl:NamedIndividual ,
+                    :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Banjo
+:Banjo rdf:type owl:NamedIndividual ,
+                :Plucked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#BarrelOrgan
+:BarrelOrgan rdf:type owl:NamedIndividual ,
+                      :Mechanically-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#BassDrum
+:BassDrum rdf:type owl:NamedIndividual ,
+                   :IPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bassoon
+:Bassoon rdf:type owl:NamedIndividual ,
+                  :DoubleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bayan
+:Bayan rdf:type owl:NamedIndividual ,
+                :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bell
+:Bell rdf:type owl:NamedIndividual ,
+               :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bongos
+:Bongos rdf:type owl:NamedIndividual ,
+                 :IPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bugle
+:Bugle rdf:type owl:NamedIndividual ,
+                :WithoutValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bull-Roarer
+:Bull-Roarer rdf:type owl:NamedIndividual ,
+                      :Wind-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Castanets
+:Castanets rdf:type owl:NamedIndividual ,
+                    :UStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Celesta
+:Celesta rdf:type owl:NamedIndividual ,
+                  :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Cello
+:Cello rdf:type owl:NamedIndividual ,
+                :Bowed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Clarinet
+:Clarinet rdf:type owl:NamedIndividual ,
+                   :SingleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Concertina
+:Concertina rdf:type owl:NamedIndividual ,
+                     :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ConchShell
+:ConchShell rdf:type owl:NamedIndividual ,
+                     :WithoutValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Congas
+:Congas rdf:type owl:NamedIndividual ,
+                 :IPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Contrabass
+:Contrabass rdf:type owl:NamedIndividual ,
+                     :Bowed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Cornet
+:Cornet rdf:type owl:NamedIndividual ,
+                 :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Cymbal
+:Cymbal rdf:type owl:NamedIndividual ,
+                 :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Didjeridu
+:Didjeridu rdf:type owl:NamedIndividual ,
+                    :WithoutValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DoubleReedBagpipe
+:DoubleReedBagpipe rdf:type owl:NamedIndividual ,
+                            :DoubleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectricBass
+:ElectricBass rdf:type owl:NamedIndividual ,
+                       <http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectricChordOrgan
+:ElectricChordOrgan rdf:type owl:NamedIndividual ,
+                             :Mechanically-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectricGuitar
+:ElectricGuitar rdf:type owl:NamedIndividual ,
+                         <http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectricOrgan
+:ElectricOrgan rdf:type owl:NamedIndividual ,
+                        :Electromagnetic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectricViolin
+:ElectricViolin rdf:type owl:NamedIndividual ,
+                         <http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Euphonium
+:Euphonium rdf:type owl:NamedIndividual ,
+                    :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FenderRhodesElectricPiano
+:FenderRhodesElectricPiano rdf:type owl:NamedIndividual ,
+                                    <http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Flute
+:Flute rdf:type owl:NamedIndividual ,
+                :TreeFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FrenchHorn
+:FrenchHorn rdf:type owl:NamedIndividual ,
+                     :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FrictionDrum
+:FrictionDrum rdf:type owl:NamedIndividual ,
+                       :IPRubbed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#GlassHarmonica
+:GlassHarmonica rdf:type owl:NamedIndividual ,
+                         :PRubbed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Gong
+:Gong rdf:type owl:NamedIndividual ,
+               :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Guitar
+:Guitar rdf:type owl:NamedIndividual ,
+                 :Plucked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#HammeredDulcimer
+:HammeredDulcimer rdf:type owl:NamedIndividual ,
+                           :Struck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Harmonica
+:Harmonica rdf:type owl:NamedIndividual ,
+                    :Mouth-blown-framed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Harmonium
+:Harmonium rdf:type owl:NamedIndividual ,
+                    :Foot-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Harp
+:Harp rdf:type owl:NamedIndividual ,
+               :Plucked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Harpsichord
+:Harpsichord rdf:type owl:NamedIndividual ,
+                      :Plucked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Holy
+:Holy rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#HumanVoice
+:HumanVoice rdf:type owl:NamedIndividual ,
+                     :DoubleReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IndianHarmonium
+:IndianHarmonium rdf:type owl:NamedIndividual ,
+                          :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jingles
+:Jingles rdf:type owl:NamedIndividual ,
+                  :UShaken .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jug
+:Jug rdf:type owl:NamedIndividual ,
+              :TreeFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Kalimba
+:Kalimba rdf:type owl:NamedIndividual ,
+                  :PPlunked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Kazoo
+:Kazoo rdf:type owl:NamedIndividual ,
+                :IPBlown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Khaem
+:Khaem rdf:type owl:NamedIndividual ,
+                :Mouth-blown-framed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#LeafInstrument
+:LeafInstrument rdf:type owl:NamedIndividual ,
+                         :Mouth-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MIDIAccordion
+:MIDIAccordion rdf:type owl:NamedIndividual ,
+                        :Digital .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MIDIDrumMachine
+:MIDIDrumMachine rdf:type owl:NamedIndividual ,
+                          :Digital .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MIDIGuitar
+:MIDIGuitar rdf:type owl:NamedIndividual ,
+                     :Digital .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MIDIKeyboard
+:MIDIKeyboard rdf:type owl:NamedIndividual ,
+                       :Digital .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MIDIWindController
+:MIDIWindController rdf:type owl:NamedIndividual ,
+                             :Digital .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mbira
+:Mbira rdf:type owl:NamedIndividual ,
+                :PPlunked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#MusicBox
+:MusicBox rdf:type owl:NamedIndividual ,
+                   :PPlunked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Oboe
+:Oboe rdf:type owl:NamedIndividual ,
+               :DoubleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#OndesMartenot
+:OndesMartenot rdf:type owl:NamedIndividual ,
+                        :Electromagnetic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Orchestrion
+:Orchestrion rdf:type owl:NamedIndividual ,
+                      :Mechanically-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#OrganFluePipes
+:OrganFluePipes rdf:type owl:NamedIndividual ,
+                         :WhistleFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#OrganReedPipes
+:OrganReedPipes rdf:type owl:NamedIndividual ,
+                         :SingleReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Panpipes
+:Panpipes rdf:type owl:NamedIndividual ,
+                   :TreeFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PedalConcertina
+:PedalConcertina rdf:type owl:NamedIndividual ,
+                          :Foot-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PedalReedOrgan
+:PedalReedOrgan rdf:type owl:NamedIndividual ,
+                         :Mechanically-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Piano
+:Piano rdf:type owl:NamedIndividual ,
+                :Struck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Piccolo
+:Piccolo rdf:type owl:NamedIndividual ,
+                  :TreeFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PrayerBowls
+:PrayerBowls rdf:type owl:NamedIndividual ,
+                      :PRubbed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ProvaConcerto
+:ProvaConcerto rdf:type owl:NamedIndividual ,
+                        :Concert ;
+               <http://purl.org/NET/c4dm/event.owl#place> :Roma ;
+               :hasDescription :ProvaDescription ;
+               :hasMusicalGenre :Rock .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ProvaDescription
+:ProvaDescription rdf:type owl:NamedIndividual ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :Description ;
+                             owl:someValuesFrom <http://purl.org/dc/terms/Box>
+                           ] .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Raggae
+:Raggae rdf:type owl:NamedIndividual ,
+                 <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Rap
+:Rap rdf:type owl:NamedIndividual ,
+              <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Rattle
+:Rattle rdf:type owl:NamedIndividual ,
+                 :UShaken .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Recorder
+:Recorder rdf:type owl:NamedIndividual ,
+                   :WhistleFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ReedOrgan
+:ReedOrgan rdf:type owl:NamedIndividual ,
+                    :Foot-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Rimba
+:Rimba rdf:type owl:NamedIndividual ,
+                :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Rock
+:Rock rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Roma
+:Roma rdf:type owl:NamedIndividual ,
+               <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#RotoDrums
+:RotoDrums rdf:type owl:NamedIndividual ,
+                    :DPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Saxophone
+:Saxophone rdf:type owl:NamedIndividual ,
+                    :SingleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Sheng
+:Sheng rdf:type owl:NamedIndividual ,
+                :Mouth-blown-framed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Sho
+:Sho rdf:type owl:NamedIndividual ,
+              :Mouth-blown-framed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#SingleReedBagpipe
+:SingleReedBagpipe rdf:type owl:NamedIndividual ,
+                            :SingleReeds .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#SlitDrum
+:SlitDrum rdf:type owl:NamedIndividual ,
+                   :UStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#SnareDrum
+:SnareDrum rdf:type owl:NamedIndividual ,
+                    :IPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Synthesizer
+:Synthesizer rdf:type owl:NamedIndividual ,
+                      :Electromagnetic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Tambourine
+:Tambourine rdf:type owl:NamedIndividual ,
+                     :IPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Theremin
+:Theremin rdf:type owl:NamedIndividual ,
+                   :Electromagnetic .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Timpani
+:Timpani rdf:type owl:NamedIndividual ,
+                  :DPStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Triangle
+:Triangle rdf:type owl:NamedIndividual ,
+                   :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Trombone
+:Trombone rdf:type owl:NamedIndividual ,
+                   :WithoutValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Trumpet
+:Trumpet rdf:type owl:NamedIndividual ,
+                  :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Tuba
+:Tuba rdf:type owl:NamedIndividual ,
+               :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Ukulele
+:Ukulele rdf:type owl:NamedIndividual ,
+                  :Plucked .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Viola
+:Viola rdf:type owl:NamedIndividual ,
+                :Bowed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Violin
+:Violin rdf:type owl:NamedIndividual ,
+                 :Bowed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Whistle
+:Whistle rdf:type owl:NamedIndividual ,
+                  :WhistleFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Xylophone
+:Xylophone rdf:type owl:NamedIndividual ,
+                    :PStruck .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jew'sHarp
+<http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jew'sHarp> rdf:type owl:NamedIndividual ,
+                                                                            :Mouth-blownPlunked .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
