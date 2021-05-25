@@ -13,6 +13,22 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ConcertName
+:ConcertName rdf:type owl:ObjectProperty ;
+             rdfs:domain :Concert .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#TicketPrice
+:TicketPrice rdf:type owl:ObjectProperty ;
+             rdfs:domain :Concert .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#TicketVendor
+:TicketVendor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Concert ;
+              rdfs:range <http://www.w3.org/2000/10/swap/pim/contact#Person> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:domain :Concert .
@@ -33,6 +49,13 @@
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#musicalGenreOf
 :musicalGenreOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ticketHomePage
+:ticketHomePage rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ;
+                rdfs:domain :Concert ;
+                rdfs:range <http://xmlns.com/foaf/0.1/Document> .
 
 
 #################################################################
@@ -75,8 +98,14 @@
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Concert
 :Concert rdf:type owl:Class ;
-         rdfs:subClassOf <http://purl.org/ontology/mo/Performance> ;
-         rdfs:comment "A musical performance given in public, typically by several performers or of several compositions." .
+         rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> ;
+         rdfs:comment "A musical performance given in public, typically by several performers or of several compositions." ,
+                      "Live musical performance of one or more works in front of an audience or in a single recording session" .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ConcertTour
+:ConcertTour rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#DPStruck
@@ -122,6 +151,12 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electrophones
 :Electrophones rdf:type owl:Class ;
                rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#First_performance
+:First_performance rdf:type owl:Class ;
+                   rdfs:subClassOf <http://purl.org/ontology/mo/Performance> ;
+                   rdfs:comment "The first known performance of a work." .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Foot-blown
@@ -174,6 +209,12 @@
                     rdfs:subClassOf :Membranophones .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#LivePerformance
+:LivePerformance rdf:type owl:Class ;
+                 rdfs:subClassOf <http://purl.org/ontology/mo/Performance> ;
+                 rdfs:comment "Live Performance that is recorded at a public event or in a single recording session." .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Location
 :Location rdf:type owl:Class ;
           rdfs:comment "Place chosen for a show like a Square, Park and Theater." .
@@ -202,6 +243,12 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Mouth-blownPlunked
 :Mouth-blownPlunked rdf:type owl:Class ;
                     rdfs:subClassOf :UnframedReed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#OpenMicPerformance
+:OpenMicPerformance rdf:type owl:Class ;
+                    rdfs:subClassOf <http://purl.org/ontology/mo/Performance> ;
+                    rdfs:comment "Live performance at a coffee house, night club, or other venue by amateur performers." .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PPlunked
@@ -388,6 +435,11 @@
                :PStruck .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Blues
+:Blues rdf:type owl:NamedIndividual ,
+                <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Bongos
 :Bongos rdf:type owl:NamedIndividual ,
                  :IPStruck .
@@ -423,6 +475,11 @@
                    :SingleReeds .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Classic
+:Classic rdf:type owl:NamedIndividual ,
+                  <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Concertina
 :Concertina rdf:type owl:NamedIndividual ,
                      :Hand-blown .
@@ -446,6 +503,11 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Cornet
 :Cornet rdf:type owl:NamedIndividual ,
                  :WithValves .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Country
+:Country rdf:type owl:NamedIndividual ,
+                  <http://purl.org/ontology/mo/Genre> .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Cymbal
@@ -488,6 +550,11 @@
                          <http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Electric/Acustic> .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#ElectronicMusic
+:ElectronicMusic rdf:type owl:NamedIndividual ,
+                          <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Euphonium
 :Euphonium rdf:type owl:NamedIndividual ,
                     :WithValves .
@@ -503,6 +570,11 @@
                 :TreeFlutes .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Folk
+:Folk rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FrenchHorn
 :FrenchHorn rdf:type owl:NamedIndividual ,
                      :WithValves .
@@ -511,6 +583,11 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#FrictionDrum
 :FrictionDrum rdf:type owl:NamedIndividual ,
                        :IPRubbed .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Funk
+:Funk rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#GlassHarmonica
@@ -553,6 +630,11 @@
                       :Plucked .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#HipHop
+:HipHop rdf:type owl:NamedIndividual ,
+                 <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Holy
 :Holy rdf:type owl:NamedIndividual ,
                <http://purl.org/ontology/mo/Genre> .
@@ -566,6 +648,11 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#IndianHarmonium
 :IndianHarmonium rdf:type owl:NamedIndividual ,
                           :Hand-blown .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jazz
+:Jazz rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Jingles
@@ -643,6 +730,11 @@
                         :Electromagnetic .
 
 
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Opera
+:Opera rdf:type owl:NamedIndividual ,
+                <http://purl.org/ontology/mo/Genre> .
+
+
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Orchestrion
 :Orchestrion rdf:type owl:NamedIndividual ,
                       :Mechanically-blown .
@@ -681,6 +773,11 @@
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Piccolo
 :Piccolo rdf:type owl:NamedIndividual ,
                   :TreeFlutes .
+
+
+###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#Pop
+:Pop rdf:type owl:NamedIndividual ,
+              <http://purl.org/ontology/mo/Genre> .
 
 
 ###  http://www.semanticweb.org/marti/ontologies/2021/4/Moe#PrayerBowls
