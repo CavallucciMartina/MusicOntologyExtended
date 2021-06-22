@@ -1,0 +1,17 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX moe: <http://www.semanticweb.org/martina/ontologies/2021/5/moe#>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX time: <www.w3.org/2006/time#>
+PREFIX event:<http://purl.org/NET/c4dm/event.owl#>
+
+SELECT ?vendor (Max(?ticketSold) as ?SoldTicket)
+WHERE {
+	?vendor rdf:type moe:Vendor.
+	?vendor moe:CompetenceRegion ?region
+	FILTER(?region = moe:Italy).
+	?vendor moe:TicketSold ?ticketSold
+}
+GROUP BY ?vendor
+ORDER BY DESC (?SoldTicket)

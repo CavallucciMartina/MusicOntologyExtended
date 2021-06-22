@@ -1,0 +1,21 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX moe: <http://www.semanticweb.org/martina/ontologies/2021/5/moe#>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX time: <www.w3.org/2006/time#>
+PREFIX event:<http://purl.org/NET/c4dm/event.owl#>
+SELECT ?price ?ticket ?concert 
+WHERE {
+	?concert rdf:type moe:Concert.
+	?ticket rdf:type moe:Ticket.
+	?ticket moe:TicketPrice ?price.
+	?concert moe:RefersToTicket ?ticket.
+	FILTER(?price > 300).
+	?concert event:place ?place.
+	FILTER(?place = moe:USA).
+	?concert moe:time_Event ?year.
+	FILTER(?year = moe:2021).
+
+}
+ORDER BY DESC (?price)

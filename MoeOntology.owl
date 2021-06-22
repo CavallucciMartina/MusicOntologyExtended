@@ -1,0 +1,797 @@
+@prefix : <http://www.semanticweb.org/martina/ontologies/2021/5/moe#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/martina/ontologies/2021/5/moe> .
+
+<http://www.semanticweb.org/martina/ontologies/2021/5/moe> rdf:type owl:Ontology ;
+                                                            owl:imports <http://purl.org/ontology/mo/> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/NET/c4dm/event.owl#place
+<http://purl.org/NET/c4dm/event.owl#place> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#CompetenceRegion
+:CompetenceRegion rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Vendor .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertHomePage
+:ConcertHomePage rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Concert ,
+                             :ConcertTour ;
+                 rdfs:range <http://www.semanticweb.org/martina/ontologies/2021/5/moe#Homepage_(foaf:homepage)> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#GenreOf
+:GenreOf rdf:type owl:ObjectProperty ;
+         owl:inverseOf :hasGenre .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#RefersToPerformance
+:RefersToPerformance rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :RefersToTicket ;
+                     rdfs:domain :Ticket ;
+                     rdfs:range <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#RefersToTicket
+:RefersToTicket rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TicketOfConcert
+:TicketOfConcert rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Ticket ;
+                 rdfs:range :Concert .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TypeLocationIn
+:TypeLocationIn rdf:type owl:ObjectProperty ;
+                owl:inverseOf :hasTypeLocation ;
+                rdfs:domain :TypeLocation ;
+                rdfs:range <http://purl.org/NET/c4dm/event.owl#Event> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#VendorIn
+:VendorIn rdf:type owl:ObjectProperty ;
+          owl:inverseOf :hasTicketVendor .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#WorkGenre
+:WorkGenre rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasAvaibleTicket
+:hasAvaibleTicket rdf:type owl:ObjectProperty ,
+                           owl:InverseFunctionalProperty ;
+                  owl:propertyDisjointWith :hasFullTicket .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasFullTicket
+:hasFullTicket rdf:type owl:ObjectProperty ,
+                        owl:InverseFunctionalProperty .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasGenre
+:hasGenre rdf:type owl:ObjectProperty ;
+          rdfs:domain <http://purl.org/ontology/mo/Performance> ;
+          rdfs:range <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasInstrumentSkill
+:hasInstrumentSkill rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasTicketVendor
+:hasTicketVendor rdf:type owl:ObjectProperty ;
+                 rdfs:domain <http://purl.org/ontology/mo/Performance> ;
+                 rdfs:range :Vendor .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#hasTypeLocation
+:hasTypeLocation rdf:type owl:ObjectProperty ;
+                 rdfs:domain <http://purl.org/NET/c4dm/event.owl#Event> ;
+                 rdfs:range :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#time_Event
+:time_Event rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://purl.org/NET/c4dm/event.owl#Event> ;
+            rdfs:range <http://www.w3.org/2006/time#TemporalEntity> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertName
+:ConcertName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Concert ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertTourName
+:ConcertTourName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :ConcertTour ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#MaxTicket
+:MaxTicket rdf:type owl:DatatypeProperty ;
+           rdfs:domain <http://purl.org/ontology/mo/Performance> ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#NumberSeat
+:NumberSeat rdf:type owl:DatatypeProperty ;
+            rdfs:domain <http://purl.org/ontology/mo/Performance> ;
+            rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#PerformanceName
+:PerformanceName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :FirstPerformance ,
+                             :LivePerformance ,
+                             :OpenMicPerformance ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TicketNumber
+:TicketNumber rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Ticket ;
+              rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TicketPrice
+:TicketPrice rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Ticket ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TicketSold
+:TicketSold rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Vendor ;
+            rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Aereophones
+:Aereophones rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#BeatingReed
+:BeatingReed rdf:type owl:Class ;
+             rdfs:subClassOf :FreeAereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Bowed
+:Bowed rdf:type owl:Class ;
+       rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Brass
+:Brass rdf:type owl:Class ;
+       rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Chordophones
+:Chordophones rdf:type owl:Class ;
+              rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Concert
+:Concert rdf:type owl:Class ;
+         rdfs:subClassOf <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertTour
+:ConcertTour rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#DoubleRedd
+:DoubleRedd rdf:type owl:Class ;
+            rdfs:subClassOf :BeatingReed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Edge
+:Edge rdf:type owl:Class ;
+      rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Elecrtophones
+:Elecrtophones rdf:type owl:Class ;
+               rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Electric
+:Electric rdf:type owl:Class ;
+          rdfs:subClassOf :Elecrtophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Electronic
+:Electronic rdf:type owl:Class ;
+            rdfs:subClassOf :Elecrtophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#FirstPerformance
+:FirstPerformance rdf:type owl:Class ;
+                  rdfs:subClassOf <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#FramedRedd
+:FramedRedd rdf:type owl:Class ;
+            rdfs:subClassOf :FreeReed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#FreeAereophones
+:FreeAereophones rdf:type owl:Class ;
+                 rdfs:subClassOf :Aereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#FreeReed
+:FreeReed rdf:type owl:Class ;
+          rdfs:subClassOf :FreeAereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Idiophones
+:Idiophones rdf:type owl:Class ;
+            rdfs:subClassOf :Percussion .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#LivePerformance
+:LivePerformance rdf:type owl:Class ;
+                 rdfs:subClassOf <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Membranophones
+:Membranophones rdf:type owl:Class ;
+                rdfs:subClassOf :Percussion .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#OpenMicPerformance
+:OpenMicPerformance rdf:type owl:Class ;
+                    rdfs:subClassOf <http://purl.org/ontology/mo/Performance> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Palace
+:Palace rdf:type owl:Class ;
+        rdfs:subClassOf :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Park
+:Park rdf:type owl:Class ;
+      rdfs:subClassOf :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Percussion
+:Percussion rdf:type owl:Class ;
+            rdfs:subClassOf <http://purl.org/ontology/mo/Instrument> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#PipeAereophones
+:PipeAereophones rdf:type owl:Class ;
+                 rdfs:subClassOf :Aereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Plucked
+:Plucked rdf:type owl:Class ;
+         rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ReedPipe
+:ReedPipe rdf:type owl:Class ;
+          rdfs:subClassOf :PipeAereophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#SingleReed
+:SingleReed rdf:type owl:Class ;
+            rdfs:subClassOf :BeatingReed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Square
+:Square rdf:type owl:Class ;
+        rdfs:subClassOf :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Stadium
+:Stadium rdf:type owl:Class ;
+         rdfs:subClassOf :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Struck
+:Struck rdf:type owl:Class ;
+        rdfs:subClassOf :Chordophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Theatre
+:Theatre rdf:type owl:Class ;
+         rdfs:subClassOf :TypeLocation .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Ticket
+:Ticket rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TypeLocation
+:TypeLocation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#UnframedReed
+:UnframedReed rdf:type owl:Class ;
+              rdfs:subClassOf :FreeReed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Vendor
+:Vendor rdf:type owl:Class ;
+        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Homepage_(foaf:homepage)
+<http://www.semanticweb.org/martina/ontologies/2021/5/moe#Homepage_(foaf:homepage)> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document> ;
+                                                                                    rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ArenaDiVerona
+:ArenaDiVerona rdf:type owl:NamedIndividual ,
+                        :Theatre .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#BassDrum
+:BassDrum rdf:type owl:NamedIndividual ,
+                   :Membranophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Bell
+:Bell rdf:type owl:NamedIndividual ,
+               :Idiophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#BillieJoeArmstrong
+:BillieJoeArmstrong rdf:type owl:NamedIndividual ;
+                    <http://purl.org/ontology/mo/member_of> :GreenDay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ChrisMartin
+:ChrisMartin rdf:type owl:NamedIndividual ;
+             <http://purl.org/ontology/mo/member_of> :Coldplay ;
+             <http://purl.org/ontology/mo/performed> :ColdplayInItaly .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Clarinet
+:Clarinet rdf:type owl:NamedIndividual ,
+                   :ReedPipe .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Coldplay
+:Coldplay rdf:type owl:NamedIndividual ,
+                   <http://purl.org/ontology/mo/MusicGroup> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ColdplayInItaly
+:ColdplayInItaly rdf:type owl:NamedIndividual ,
+                          :Concert ;
+                 <http://purl.org/NET/c4dm/event.owl#place> :Italy ;
+                 <http://purl.org/ontology/mo/instrument> :Guitar ,
+                                                          :Viola ,
+                                                          :Violin ;
+                 :hasGenre :Pop ;
+                 :hasTypeLocation :StadioDiMilano ;
+                 :time_Event :May2021 ;
+                 :MaxTicket 500 ;
+                 :NumberSeat 500 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertTSTM
+:ConcertTSTM rdf:type owl:NamedIndividual ,
+                      :Concert ;
+             <http://purl.org/NET/c4dm/event.owl#place> :USA ;
+             <http://purl.org/ontology/mo/singer> :JaredLeto ;
+             :RefersToTicket :TSTMTicket ;
+             :time_Event <http://www.semanticweb.org/martina/ontologies/2021/5/moe#2021> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertoGIanna
+:ConcertoGIanna rdf:type owl:NamedIndividual ,
+                         :Concert ;
+                <http://purl.org/NET/c4dm/event.owl#place> :Italy ;
+                <http://purl.org/ontology/mo/singer> :GiannaNannini ;
+                :time_Event :May2021 ;
+                :MaxTicket 2000 ;
+                :NumberSeat 2000 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ConcertoLigabue
+:ConcertoLigabue rdf:type owl:NamedIndividual ,
+                          :Concert ;
+                 <http://purl.org/NET/c4dm/event.owl#place> :Italy ;
+                 <http://purl.org/ontology/mo/instrument> :Guitar ;
+                 <http://purl.org/ontology/mo/singer> :LucianoLigabue ;
+                 :hasGenre :Rock ;
+                 :hasTypeLocation :ArenaDiVerona ;
+                 :time_Event :May2021 ;
+                 :MaxTicket 1000 ;
+                 :NumberSeat 1000 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Congas
+:Congas rdf:type owl:NamedIndividual ,
+                 :Membranophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ElectricBass
+:ElectricBass rdf:type owl:NamedIndividual ,
+                       :Electric .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ElectricGuitar
+:ElectricGuitar rdf:type owl:NamedIndividual ,
+                         :Electric .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Flute
+:Flute rdf:type owl:NamedIndividual ,
+                :Edge .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#GiannaNannini
+:GiannaNannini rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#GreenDay
+:GreenDay rdf:type owl:NamedIndividual ,
+                   <http://purl.org/ontology/mo/MusicGroup> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Guitar
+:Guitar rdf:type owl:NamedIndividual ,
+                 :Plucked .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#GuyBerryman
+:GuyBerryman rdf:type owl:NamedIndividual ;
+             <http://purl.org/ontology/mo/member_of> :Coldplay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Harmonica
+:Harmonica rdf:type owl:NamedIndividual ,
+                    :FramedRedd .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Harp
+:Harp rdf:type owl:NamedIndividual ,
+               :Plucked .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Italy
+:Italy rdf:type owl:NamedIndividual ;
+       <http://purl.org/NET/c4dm/event.owl#place> :Italy .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#JaredLeto
+:JaredLeto rdf:type owl:NamedIndividual ;
+           <http://purl.org/ontology/mo/member_of> :ThirtySecondsToMars ;
+           <http://purl.org/NET/c4dm/event.owl#place> :USA .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#JimMorrison
+:JimMorrison rdf:type owl:NamedIndividual ;
+             <http://purl.org/ontology/mo/member_of> :TheDoors .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#JohnDensmore
+:JohnDensmore rdf:type owl:NamedIndividual ;
+              <http://purl.org/ontology/mo/member_of> :TheDoors .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#JonnyBuckland
+:JonnyBuckland rdf:type owl:NamedIndividual ;
+               <http://purl.org/ontology/mo/member_of> :Coldplay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#KristNovoselic
+:KristNovoselic rdf:type owl:NamedIndividual ;
+                <http://purl.org/ontology/mo/member_of> :Nirvana .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#KurtCobain
+:KurtCobain rdf:type owl:NamedIndividual ;
+            <http://purl.org/ontology/mo/member_of> :Nirvana .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#LucianoLigabue
+:LucianoLigabue rdf:type owl:NamedIndividual ,
+                         <http://purl.org/ontology/mo/SoloMusicArtist> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#MAX
+:MAX rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#May2021
+:May2021 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#MikeDirnt
+:MikeDirnt rdf:type owl:NamedIndividual ;
+           <http://purl.org/ontology/mo/member_of> :GreenDay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#NIrvanaConcert2021
+:NIrvanaConcert2021 rdf:type owl:NamedIndividual ,
+                             :Concert ;
+                    <http://purl.org/NET/c4dm/event.owl#place> :USA ;
+                    <http://purl.org/ontology/mo/singer> :KurtCobain ;
+                    :RefersToTicket :NirvanaTicketConcert ;
+                    :time_Event <http://www.semanticweb.org/martina/ontologies/2021/5/moe#2021> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Nirvana
+:Nirvana rdf:type owl:NamedIndividual ,
+                  <http://purl.org/ontology/mo/MusicGroup> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#NirvanaTicketConcert
+:NirvanaTicketConcert rdf:type owl:NamedIndividual ,
+                               :Ticket ;
+                      :TicketPrice 560 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Oboe
+:Oboe rdf:type owl:NamedIndividual ,
+               :ReedPipe .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Organ
+:Organ rdf:type owl:NamedIndividual ,
+                :FramedRedd .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Piano
+:Piano rdf:type owl:NamedIndividual ,
+                :Struck .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Piccolo
+:Piccolo rdf:type owl:NamedIndividual ,
+                  :Edge .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Pop
+:Pop rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#RayManzarek
+:RayManzarek rdf:type owl:NamedIndividual ;
+             <http://purl.org/ontology/mo/member_of> :TheDoors .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#RobbyKrieger
+:RobbyKrieger rdf:type owl:NamedIndividual ;
+              <http://purl.org/ontology/mo/member_of> :TheDoors .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Rock
+:Rock rdf:type owl:NamedIndividual ,
+               <http://purl.org/ontology/mo/Genre> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ShannonLeto
+:ShannonLeto rdf:type owl:NamedIndividual ;
+             <http://purl.org/ontology/mo/member_of> :ThirtySecondsToMars .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#StadioDiMilano
+:StadioDiMilano rdf:type owl:NamedIndividual ,
+                         :Stadium .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Synthesizer
+:Synthesizer rdf:type owl:NamedIndividual ,
+                      :Electronic .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TSTMTicket
+:TSTMTicket rdf:type owl:NamedIndividual ,
+                     :Ticket ;
+            :TicketPrice 725 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TheDoors
+:TheDoors rdf:type owl:NamedIndividual ,
+                   <http://purl.org/ontology/mo/MusicGroup> ;
+          <http://purl.org/ontology/mo/singer> :JimMorrison .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#ThirtySecondsToMars
+:ThirtySecondsToMars rdf:type owl:NamedIndividual ,
+                              <http://purl.org/ontology/mo/MusicGroup> .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TicketOne
+:TicketOne rdf:type owl:NamedIndividual ,
+                    :Vendor ;
+           :TicketSold 10000 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TreCool
+:TreCool rdf:type owl:NamedIndividual ;
+         <http://purl.org/ontology/mo/member_of> :GreenDay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Triangle
+:Triangle rdf:type owl:NamedIndividual ,
+                   :Idiophones .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Trombone
+:Trombone rdf:type owl:NamedIndividual ,
+                   :Brass .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Tuba
+:Tuba rdf:type owl:NamedIndividual ,
+               :Brass .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#TuttoConcerti
+:TuttoConcerti rdf:type owl:NamedIndividual ,
+                        :Vendor ;
+               :CompetenceRegion :Italy ;
+               :TicketSold 50000 .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#USA
+:USA rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Viola
+:Viola rdf:type owl:NamedIndividual ,
+                :Bowed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#Violin
+:Violin rdf:type owl:NamedIndividual ,
+                 :Bowed .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#WillChampion
+:WillChampion rdf:type owl:NamedIndividual ;
+              <http://purl.org/ontology/mo/member_of> :Coldplay .
+
+
+###  http://www.semanticweb.org/martina/ontologies/2021/5/moe#2021
+<http://www.semanticweb.org/martina/ontologies/2021/5/moe#2021> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:perf rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:seat rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:inst rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:ag rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:gen rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "FullTicket"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://purl.org/NET/c4dm/event.owl#Event> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :perf
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :NumberSeat ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :perf ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :seat
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :MaxTicket ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :perf ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :seat
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasFullTicket ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :perf ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :perf
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "InstrumentSkill"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://purl.org/ontology/mo/instrument> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :perf ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :inst
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://purl.org/ontology/mo/performed> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :ag ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :perf
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasInstrumentSkill ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :ag ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :inst
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "WorkGenre"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasGenre ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :perf ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :gen
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://purl.org/ontology/mo/performed> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :ag ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :perf
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :WorkGenre ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :ag ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :gen
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
