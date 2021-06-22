@@ -9,10 +9,24 @@ This project refers to a personal project of Semantic Web Course at University.
 * Instrument as Individuals
 * Class Concert as subclass of Performance
 * Class Location of Concert
-* Musical Genrse as Individuals
+* Musical Genre as Individuals
+* Concert Vendor as Individuals
+* Concert Ticket as Individuals
+
+The object properties and data properties referring to the above objects have also been implemented. 
 
 ### SPARQL
-todo
-### SWRL
-todo
+The following queries have been implemented:
+* Concerts with sold out seats
+* Mumber of artists in the Band
+* Most expensive concert tickets of 2021 in USA
+* Seller who has sold more tickets in Italy 
 
+### SWRL
+The following inference rules have been implemented:
+* ``` instrument (?perf , ?inst) ^ performed (?ag , ?perf) ->hasInstrumentSkill (?ag , ?inst) ```
+* ``` hasGenre (?perf , ?gen) ^ performed (?ag, ?perf) -> WorkGenre (?ag, ?gen) ```
+* ``` Event(?perf) ^ NumberSeat (?perf , ?seat) ^ MaxTicket (?perf , ?seat) ->hasFullTicket (?perf , ?perf) ```
+
+### Documentation
+The project report is in: WS-MusicOntology-report.pdf
